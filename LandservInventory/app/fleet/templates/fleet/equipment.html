@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Equipment</h2>
+<a href="{{ url_for('fleet.add_equipment') }}" class="btn btn-sm btn-primary mb-2">Add</a>
+<div class="row">
+{% for e in equipment %}
+<div class="col-12 col-md-6 col-lg-4">
+  <div class="card mb-3">
+    {% if e.image_path %}<img src="{{ url_for('static', filename='uploads/' ~ e.image_path) }}" class="card-img-top">{% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{ e.name }}</h5>
+      <p class="card-text">{{ e.type }} - {{ e.mileage }} mi</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

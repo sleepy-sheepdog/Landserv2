@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <h4>Low Stock</h4>
+    <ul class="list-group">
+      {% for m in low_stock %}<li class="list-group-item d-flex justify-content-between align-items-center">{{ m.name }}<span class="badge bg-danger">{{ m.quantity }}</span></li>{% else %}<li class="list-group-item">None</li>{% endfor %}
+    </ul>
+  </div>
+  <div class="col-12 col-lg-4">
+    <h4>Overdue Inspections</h4>
+    <ul class="list-group">{% for e in overdue_inspections %}<li class="list-group-item">{{ e.name }} – due {{ e.inspection_due }}</li>{% else %}<li class="list-group-item">None</li>{% endfor %}</ul>
+  </div>
+  <div class="col-12 col-lg-4">
+    <h4>Overdue Oil Changes</h4>
+    <ul class="list-group">{% for o in overdue_oil_changes %}<li class="list-group-item">{{ o.name }} – due {{ o.oil_change_due }}</li>{% else %}<li class="list-group-item">None</li>{% endfor %}</ul>
+  </div>
+</div>
+{% endblock %}

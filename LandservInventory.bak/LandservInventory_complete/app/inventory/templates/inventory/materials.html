@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Materials</h2>
+<a href="{{ url_for('inventory.add_material') }}" class="btn btn-sm btn-primary mb-2">Add</a>
+<table class="table table-responsive"><thead><tr><th>Name</th><th>Qty</th><th>Unit</th><th>Price</th><th>Supplier</th><th>Type</th><th>Actions</th></tr></thead><tbody>
+{% for m in materials %}<tr>
+<td>{{ m.name }}</td><td>{{ m.quantity }}</td><td>{{ m.unit }}</td><td>{{ m.unit_price }}</td>
+<td>{{ m.supplier }}</td><td>{{ m.material_type }}</td>
+<td><a href="{{ url_for('inventory.edit_material', id=m.id) }}" class="btn btn-sm btn-warning">Edit</a>
+<form method="POST" action="{{ url_for('inventory.delete_material', id=m.id) }}" style="display:inline;">{{ form.hidden_tag() }}<button class="btn btn-sm btn-danger">Del</button></form></td>
+</tr>{% endfor %}
+</tbody></table>
+{% endblock %}

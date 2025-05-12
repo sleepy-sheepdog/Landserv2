@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ form.name.data and 'Edit' or 'Add' }} Material</h2>
+<form method="POST">{{ form.hidden_tag() }}
+  {% for field in form if field.type != 'CSRFToken' and field.type != 'SubmitField' %}
+  <div class="mb-3">{{ field.label }}{{ field(class="form-control") }}</div>
+  {% endfor %}
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

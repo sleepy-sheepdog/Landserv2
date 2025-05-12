@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<table class="table"><thead><tr><th>User</th><th>Role</th><th>Change</th></tr></thead><tbody>
+{% for u in users %}<tr>
+<td>{{ u.username }}</td><td>{{ u.role }}</td><td>
+<form method="POST">{{ user_forms[u.id].hidden_tag() }}{{ user_forms[u.id].role(class="form-select d-inline-block w-auto") }}{{ user_forms[u.id].submit(class="btn btn-sm btn-primary") }}</form>
+</td></tr>{% endfor %}
+</tbody></table>
+{% endblock %}
